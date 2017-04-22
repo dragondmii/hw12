@@ -76,4 +76,5 @@ def plot_confusion_matrix(cm, target_name_list, title):
 if __name__ == '__main__':
     clf = tree.DecisionTreeClassifier(random_state=0)
     df = run_train_test_split(clf, 10, 0.3)
+    run_cross_validation(df, 2)
 
