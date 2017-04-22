@@ -29,7 +29,9 @@ def run_train_test_split(classifier, n, test_size):
         #print('test data\'s size %d' % test_data.shape[0])
         #print('test target: %s' % str(test_target))
         dt = classifier.fit(train_data, train_target)
-        print(sum(dt.predict(test_data) == test_target)/float(len(test_target)))
+        print 'train/test run ',i,': accuracy = ',(sum(dt.predict(test_data) == test_target)/float(len(test_target)))
+        print '------------------------------------------------------'
+    return dt
 
 def run_cross_validation(dtr, n):
     for i in xrange(n):
@@ -73,5 +75,5 @@ def plot_confusion_matrix(cm, target_name_list, title):
 ## command line arguments
 if __name__ == '__main__':
     clf = tree.DecisionTreeClassifier(random_state=0)
-    run_train_test_split(clf, 10, 0.3)
+    df = run_train_test_split(clf, 10, 0.3)
 
