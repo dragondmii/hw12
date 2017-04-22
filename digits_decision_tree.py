@@ -54,7 +54,7 @@ def compute_train_test_confusion_matrix(classifier, test_size):
     dt = classifier.fit(train_data, train_target)
     test_predict = dt.predict(test_data)
     cm = confusion_matrix(test_target, test_predict)
-    plot_confusion_matrix(cm, ['setosa', 'versicolor', 'virginica'], 'IRIS DT CM')
+    plot_confusion_matrix(cm, ['0','1','2','3','4','5','6','7','8','9'], 'IRIS DT CM')
 
 def plot_confusion_matrix(cm, target_name_list, title):
     pylab.clf()
