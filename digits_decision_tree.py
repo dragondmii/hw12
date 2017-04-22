@@ -70,5 +70,8 @@ def plot_confusion_matrix(cm, target_name_list, title):
     pylab.show()
 
 
-
+## command line arguments
+if __name__ == '__main__':
+    clf = tree.DecisionTreeClassifier(random_state=0)
+    run_train_test_split(clf, 10, 0.3)
 
