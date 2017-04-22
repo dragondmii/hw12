@@ -36,10 +36,12 @@ def run_train_test_split(classifier, n, test_size):
 def run_cross_validation(dtr, n):
     for i in xrange(n):
         ## cv specifies the number of folds data is split
+        print 'cross-validation run ',n
         for cv in xrange(5, 16):
             cross_val = cross_val_predict(dtr, data_items, target, cv=cv)
             acc = sum(cross_val==target)/float(len(target))
-            print cv, acc
+            print 'num_folders ',cv,', accuracy = ',acc
+            print '------------------------------'
 
 from sklearn.metrics import confusion_matrix
 from matplotlib import pylab
