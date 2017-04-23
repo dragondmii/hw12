@@ -9,8 +9,8 @@
 
 from sklearn.datasets import load_digits
 from sklearn import tree
-from sklearn.model_selection import train_test_split
-from sklearn.model_selection import cross_val_predict
+from sklearn.cross_validation import train_test_split
+from sklearn.cross_validation import cross_val_predict
 import matplotlib.pyplot as plt
 import numpy as np
 from random import randint
