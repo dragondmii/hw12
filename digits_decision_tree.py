@@ -24,10 +24,6 @@ def run_train_test_split(classifier, n, test_size):
         train_data, test_data, train_target, test_target = \
                     train_test_split(data_items, target,
                                      test_size=test_size, random_state=randint(0, 1000))
-        #print('train data\'s size %d' % train_data.shape[0])
-        #print('train target: %s' % str(train_target))
-        #print('test data\'s size %d' % test_data.shape[0])
-        #print('test target: %s' % str(test_target))
         dt = classifier.fit(train_data, train_target)
         print 'train/test run ',i,': accuracy = ',(sum(dt.predict(test_data) == test_target)/float(len(test_target)))
         print '------------------------------------------------------'
@@ -35,7 +31,6 @@ def run_train_test_split(classifier, n, test_size):
 
 def run_cross_validation(dtr, n):
     for i in xrange(n):
-        ## cv specifies the number of folds data is split
         print 'cross-validation run ',n
         for cv in xrange(5, 16):
             cross_val = cross_val_predict(dtr, data_items, target, cv=cv)
@@ -54,7 +49,7 @@ def compute_train_test_confusion_matrix(classifier, test_size):
     dt = classifier.fit(train_data, train_target)
     test_predict = dt.predict(test_data)
     cm = confusion_matrix(test_target, test_predict)
-    plot_confusion_matrix(cm, ['0','1','2','3','4','5','6','7','8','9'], 'IRIS DT CM')
+    plot_confusion_matrix(cm, ['0','1','2','3','4','5','6','7','8','9'], 'Digits Decision Tree')
 
 def plot_confusion_matrix(cm, target_name_list, title):
     pylab.clf()
@@ -77,6 +72,7 @@ def plot_confusion_matrix(cm, target_name_list, title):
 ## command line arguments
 if __name__ == '__main__':
     clf = tree.DecisionTreeClassifier(random_state=0)
-    df = run_train_test_split(clf, 10, 0.3)
-    run_cross_validation(df, 2)
+    #df = run_train_test_split(clf, 10, 0.3)
+    #run_cross_validation(df, 2)
+    compute_train_test_confusion_matrix(clf,200)
 
